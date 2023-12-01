@@ -1,0 +1,210 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang2057{\fonttbl{\f0\fnil\fcharset0 Calibri;}{\f1\fnil Consolas;}{\f2\fnil\fcharset0 Consolas;}}
+{\colortbl ;\red127\green0\blue85;\red0\green0\blue0;\red100\green100\blue100;\red42\green0\blue255;\red0\green0\blue192;\red212\green212\blue212;\red192\green255\blue192;\red255\green160\blue160;\red106\green62\blue62;\red0\green128\blue128;\red63\green127\blue127;\red127\green0\blue127;\red128\green128\blue128;\red63\green127\blue95;\red0\green0\blue255;\red63\green95\blue191;}
+{\*\generator Riched20 10.0.22621}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\ul\b\f0\fs22\lang9 Steps to create Hibernate_Demo projects and it's file\par
+\ulnone 1.  Create Maven Project of name Hibernate_Demo\par
+2. Add dependencies of mysql-connector-j, hibernate-core (from mvnreposetory)\par
+3.Create hibernate.cfg.xml file in src folder, paste line 10-12 of hibernate-core-mapping-3.0.dtd(it's path maven dependencies/hibernate-core 5.5.4final.jar/org.hibernate)...write database connectivity information also\par
+4. Create Student.java class\par
+5. Create App.java class\par
+6. To run click on project...run as...run on java application\par
+\par
+\ul Student.java\ulnone\par
+\cf1\f1\fs20 package\cf2\b0  com.app;\cf0\par
+\par
+\cf1\b import\cf2\b0  javax.persistence.*;\cf0\par
+\par
+\cf3 @Entity\cf0\par
+\cf3 @Table\cf2 (name=\cf4 "Student123"\cf2 )\cf0\par
+\cf2  \cf1\b public\cf2\b0  \cf1\b class\cf2\b0  Student \{\cf0\par
+\cf2\tab\cf0\par
+\cf2\tab\cf3 @Id\cf0\par
+\cf2\tab\cf3 @GeneratedValue\cf2 (strategy=GenerationType.\cf5\b\i IDENTITY\cf2\b0\i0 )\cf0\par
+\cf2\tab\cf1\b private\cf2\b0  \cf1\b int\cf2\b0  \cf5 id\cf2 ;\cf0\par
+\cf2\tab\cf3 @\highlight6 Column\cf2\highlight0 (name=\cf4 "fname"\cf2 )\cf0\par
+\cf2\tab\cf1\b private\cf2\b0  String \cf5 firstName\cf2 ;\cf0\par
+\cf2\tab\cf3 @\highlight6 Column\cf0\highlight0\par
+\cf2\tab\cf1\b private\cf2\b0  String \cf5 lastName\cf2 ;\cf0\par
+\cf2\tab\cf3 @\highlight6 Column\cf0\highlight0\par
+\cf2\tab\cf1\b private\cf2\b0  \cf1\b int\cf2\b0  \cf5 age\cf2 ;\cf0\par
+\cf2\tab\cf0\par
+\cf2\highlight7\tab\cf1\b public\cf2\b0  Student() \{\}\cf0\highlight0\par
+\par
+\cf2\tab\cf1\b public\cf2\b0  \cf1\b int\cf2\b0  getId() \{\cf0\par
+\cf2\highlight8\tab\tab\cf1\b return\cf2\b0  \cf5 id\cf2 ;\cf0\highlight0\par
+\cf2\tab\}\cf0\par
+\par
+\cf2\tab\cf1\b public\cf2\b0  \cf1\b void\cf2\b0  setId(\cf1\b int\cf2\b0  \cf9 id\cf2 ) \{\cf0\par
+\cf2\highlight8\tab\tab\cf1\b this\cf2\b0 .\cf5 id\cf2  = \cf9 id\cf2 ;\cf0\highlight0\par
+\cf2\highlight8\tab\}\cf0\highlight0\par
+\par
+\cf2\tab\cf1\b public\cf2\b0  String getFirstName() \{\cf0\par
+\cf2\highlight8\tab\tab\cf1\b return\cf2\b0  \cf5 firstName\cf2 ;\cf0\highlight0\par
+\cf2\tab\}\cf0\par
+\par
+\cf2\tab\cf1\b public\cf2\b0  \cf1\b void\cf2\b0  setFirstName(String \cf9 firstName\cf2 ) \{\cf0\par
+\cf2\highlight8\tab\tab\cf1\b this\cf2\b0 .\cf5 firstName\cf2  = \cf9 firstName\cf2 ;\cf0\highlight0\par
+\cf2\highlight8\tab\}\cf0\highlight0\par
+\par
+\cf2\tab\cf1\b public\cf2\b0  String getLastName() \{\cf0\par
+\cf2\highlight8\tab\tab\cf1\b return\cf2\b0  \cf5 lastName\cf2 ;\cf0\highlight0\par
+\cf2\tab\}\cf0\par
+\par
+\cf2\tab\cf1\b public\cf2\b0  \cf1\b void\cf2\b0  setLastName(String \cf9 lastName\cf2 ) \{\cf0\par
+\cf2\highlight8\tab\tab\cf1\b this\cf2\b0 .\cf5 lastName\cf2  = \cf9 lastName\cf2 ;\cf0\highlight0\par
+\cf2\highlight8\tab\}\cf0\highlight0\par
+\par
+\cf2\tab\cf1\b public\cf2\b0  \cf1\b int\cf2\b0  getAge() \{\cf0\par
+\cf2\highlight8\tab\tab\cf1\b return\cf2\b0  \cf5 age\cf2 ;\cf0\highlight0\par
+\cf2\tab\}\cf0\par
+\par
+\cf2\tab\cf1\b public\cf2\b0  \cf1\b void\cf2\b0  setAge(\cf1\b int\cf2\b0  \cf9 age\cf2 ) \{\cf0\par
+\cf2\highlight8\tab\tab\cf1\b this\cf2\b0 .\cf5 age\cf2  = \cf9 age\cf2 ;\cf0\highlight0\par
+\cf2\highlight8\tab\}\cf0\highlight0\par
+\par
+\cf2\tab\cf3 @Override\cf0\par
+\cf2\tab\cf1\b public\cf2\b0  String toString() \{\cf0\par
+\cf2\highlight8\tab\tab\cf1\b return\cf2\b0  \cf4 "Student [id="\cf2  + \cf5 id\cf2  + \cf4 ", firstName="\cf2  + \cf5 firstName\cf2  + \cf4 ", lastName="\cf2  + \cf5 lastName\cf2  + \cf4 ", age="\cf2  + \cf5 age\cf2  + \cf4 "]"\cf2 ;\cf0\highlight0\par
+\cf2\tab\}\cf0\par
+\cf2\}\cf0\par
+\par
+\ul\b\f2\lang2057 App.Java\par
+\ulnone\b0 package com.app;\par
+\par
+import java.util.List;\par
+\par
+import org.hibernate.Query;\par
+import org.hibernate.Session;\par
+import org.hibernate.SessionFactory;\par
+import org.hibernate.cfg.Configuration;\par
+\par
+public class App \par
+\{\par
+    public static void main( String[] args )\par
+    \{\par
+    \tab //Create Session factory\par
+        SessionFactory factory=new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Student.class).buildSessionFactory();\par
+        \par
+        //Create Session\par
+        Session session=factory.openSession();\par
+        \par
+        //Begin the Transaction\par
+        session.beginTransaction();\par
+        \par
+        //Perform operation\par
+        //Create Student object\par
+          Student s=new Student();\par
+          s.setFirstName("Mayuri");\par
+          s.setLastName("Ma'am");\par
+          s.setAge(24);\par
+          session.save(s);\par
+//        \par
+        //Get StudentID\par
+//        \par
+//          int id=5;\par
+//          Student s=session.get(Student.class, id);\par
+//          System.out.println(s);\par
+//        \par
+        \par
+        //Update Student\par
+//        int id=2;\par
+//        Student s=session.get(Student.class, id);\par
+//        s.setFirstName("Prathmesh");\par
+//        s.setLastName("Kulkarni");\par
+        \par
+        //Delete Student\par
+        \par
+//        int id=8;\par
+//        Student s=session.get(Student.class, id);\par
+//        session.delete(s);\par
+\par
+        //List of Students\par
+        \par
+//        Query query=session.createQuery("from Student");\par
+//        List<Student> l=query.list();\par
+//        for(Student s:l)\par
+//        \{\par
+//        \tab System.out.println(s);\par
+//        \}\par
+        \par
+        //HQL-Hibernate Query Language\par
+        \par
+//        List <Student> l=session.createQuery("from Student s where s.lastName='Aswale'").getResultList();\par
+//        for(Student a:l)\par
+//        \{\par
+//        \tab System.out.println(a);\par
+//        \}\par
+        \par
+        session.getTransaction().commit();\par
+        session.close();\par
+        factory.close();\par
+        \par
+    \}\par
+\}\par
+\par
+\ul\b hibernate.cfg.xml\par
+\cf10\ulnone\b0\f1 <?\cf11 xml\cf0  \cf12 version\cf2 =\cf4\i "1.0"\cf0\i0  \cf12 encoding\cf2 =\cf4\i "UTF-8"\cf10\i0 ?>\cf0\par
+\cf10 <!\cf11 DOCTYPE\cf0  \cf10 hibernate-configuration\cf0  \cf13 PUBLIC\cf0\par
+\tab\cf10 "-//Hibernate/Hibernate Configuration DTD 3.0//EN"\cf0\par
+\tab\cf14 "{{\field{\*\fldinst{HYPERLINK http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd }}{\fldrslt{http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd\ul0\cf0}}}}\f1\fs20 "\cf10 >\cf0\par
+\cf2\tab\cf0\par
+\cf2\tab\cf10 <\cf11 hibernate-configuration\cf10 >\cf0\par
+\cf2\tab\cf10 <\cf11 session-factory\cf10 >\cf0\par
+\cf2\tab\cf10 <\cf11 property\cf0  \cf12 name\cf2 =\cf4\i "hbm2ddl.auto"\cf10\i0 >\cf2 update\cf10 </\cf11 property\cf10 >\cf0\par
+\cf2\tab\cf10 <\cf11 property\cf0  \cf12 name\cf2 =\cf4\i "dialect"\cf10\i0 >\cf2 org.hibernate.dialect.MySQL8Dialect\cf10 </\cf11 property\cf10 >\cf0\par
+\cf2\tab\cf10 <\cf11 property\cf0  \cf12 name\cf2 =\cf4\i "connection.url"\cf10\i0 >\cf2 jdbc:mysql://\ul localhost\ulnone :3306/\ul dbjava\cf10\ulnone </\cf11 property\cf10 >\cf0\par
+\cf2\tab\cf10 <\cf11 property\cf0  \cf12 name\cf2 =\cf4\i "connection.username"\cf10\i0 >\cf2 root\cf10 </\cf11 property\cf10 >\cf0\par
+\cf2\tab\cf10 <\cf11 property\cf0  \cf12 name\cf2 =\cf4\i "connection.password"\cf10\i0 >\cf2\ul Lsd\ulnone @5030\cf10 </\cf11 property\cf10 >\cf0\par
+\cf2\tab\cf10 <\cf11 property\cf0  \cf12 name\cf2 =\cf4\i "connection.driver_class"\cf10\i0 >\cf2 com.mysql.jdbc.Driver\cf10 </\cf11 property\cf10 >\cf0\par
+\cf2\tab\cf10 <\cf11 property\cf0  \cf12 name\cf2 =\cf4\i "show_sql"\cf10\i0 >\cf2 true\cf10 </\cf11 property\cf10 >\cf0\par
+\cf2\tab\cf10 <\cf11 mapping\cf0  \cf12 class\cf2 =\cf4\i "com.app.Student"\cf10\i0 />\cf0\par
+\cf2\tab\cf0\par
+\cf2\tab\cf0\par
+\cf2\tab\cf10 </\cf11 session-factory\cf10 >\cf0\par
+\cf2\tab\cf10 </\cf11 hibernate-configuration\cf10 >\par
+\cf0\lang9\par
+\ul\b\f2\lang2057 pom.xml\par
+\cf10\ulnone\b0\f1 <\cf11 project\cf0  \cf12 xmlns\cf2 =\cf4\i "http://maven.apache.org/POM/4.0.0"\cf0\i0\par
+\tab\cf12 xmlns:xsi\cf2 =\cf4\i "http://www.w3.org/2001/XMLSchema-instance"\cf0\i0\par
+\tab\cf12 xsi:schemaLocation\cf2 =\cf4\i "http://maven.apache.org/POM/4.0.0 {{\field{\*\fldinst{HYPERLINK http://maven.apache.org/xsd/maven-4.0.0.xsd }}{\fldrslt{http://maven.apache.org/xsd/maven-4.0.0.xsd\ul0\cf0}}}}\f1\fs20 "\cf10\i0 >\cf0\par
+\cf2\tab\cf10 <\cf11 modelVersion\cf10 >\cf2 4.0.0\cf10 </\cf11 modelVersion\cf10 >\cf0\par
+\par
+\cf2\tab\cf10 <\cf11 groupId\cf10 >\cf2 com.app\cf10 </\cf11 groupId\cf10 >\cf0\par
+\cf2\tab\cf10 <\cf11 artifactId\cf10 >\cf2 Hibernate_demo\cf10 </\cf11 artifactId\cf10 >\cf0\par
+\cf2\tab\cf10 <\cf11 version\cf10 >\cf2 0.0.1-SNAPSHOT\cf10 </\cf11 version\cf10 >\cf0\par
+\cf2\tab\cf10 <\cf11 packaging\cf10 >\cf2 jar\cf10 </\cf11 packaging\cf10 >\cf0\par
+\par
+\cf2\tab\cf10 <\cf11 name\cf10 >\cf2 Hibernate_demo\cf10 </\cf11 name\cf10 >\cf0\par
+\cf2\tab\cf10 <\cf11 url\cf10 >\cf2 http://maven.apache.org\cf10 </\cf11 url\cf10 >\cf0\par
+\par
+\cf2\tab\cf10 <\cf11 properties\cf10 >\cf0\par
+\cf2\tab\tab\cf10 <\cf11 project.build.sourceEncoding\cf10 >\cf2 UTF-8\cf10 </\cf11 project.build.sourceEncoding\cf10 >\cf0\par
+\cf2\tab\cf10 </\cf11 properties\cf10 >\cf0\par
+\par
+\cf2\tab\cf10 <\cf11 dependencies\cf10 >\cf0\par
+\cf2\tab\tab\cf10 <\cf11 dependency\cf10 >\cf0\par
+\cf2\tab\tab\tab\cf10 <\cf11 groupId\cf10 >\cf2 junit\cf10 </\cf11 groupId\cf10 >\cf0\par
+\cf2\tab\tab\tab\cf10 <\cf11 artifactId\cf10 >\cf2 junit\cf10 </\cf11 artifactId\cf10 >\cf0\par
+\cf2\tab\tab\tab\cf10 <\cf11 version\cf10 >\cf2 3.8.1\cf10 </\cf11 version\cf10 >\cf0\par
+\cf2\tab\tab\tab\cf10 <\cf11 scope\cf10 >\cf2 test\cf10 </\cf11 scope\cf10 >\cf0\par
+\cf2\tab\tab\cf10 </\cf11 dependency\cf10 >\cf0\par
+\cf2\tab\tab\cf16 <!-- {{\field{\*\fldinst{HYPERLINK https://mvnrepository.com/artifact/com.mysql/mysql-connector-j }}{\fldrslt{https://mvnrepository.com/artifact/com.mysql/mysql-connector-j\ul0\cf0}}}}\f1\fs20  -->\cf0\par
+\cf2\tab\tab\cf10 <\cf11 dependency\cf10 >\cf0\par
+\cf2\tab\tab\tab\cf10 <\cf11 groupId\cf10 >\cf2 com.mysql\cf10 </\cf11 groupId\cf10 >\cf0\par
+\cf2\tab\tab\tab\cf10 <\cf11 artifactId\cf10 >\cf2 mysql-connector-j\cf10 </\cf11 artifactId\cf10 >\cf0\par
+\cf2\tab\tab\tab\cf10 <\cf11 version\cf10 >\cf2 8.2.0\cf10 </\cf11 version\cf10 >\cf0\par
+\cf2\tab\tab\cf10 </\cf11 dependency\cf10 >\cf0\par
+\cf2\tab\tab\cf16 <!-- {{\field{\*\fldinst{HYPERLINK https://mvnrepository.com/artifact/org.hibernate/hibernate-core }}{\fldrslt{https://mvnrepository.com/artifact/org.hibernate/hibernate-core\ul0\cf0}}}}\f1\fs20  -->\cf0\par
+\cf2\tab\tab\cf10 <\cf11 dependency\cf10 >\cf0\par
+\cf2\tab\tab\tab\cf10 <\cf11 groupId\cf10 >\cf2 org.hibernate\cf10 </\cf11 groupId\cf10 >\cf0\par
+\cf2\tab\tab\tab\cf10 <\cf11 artifactId\cf10 >\cf2 hibernate-core\cf10 </\cf11 artifactId\cf10 >\cf0\par
+\cf2\tab\tab\tab\cf10 <\cf11 version\cf10 >\cf2 5.5.4.Final\cf10 </\cf11 version\cf10 >\cf0\par
+\cf2\tab\tab\cf10 </\cf11 dependency\cf10 >\cf0\par
+\par
+\cf2\tab\cf10 </\cf11 dependencies\cf10 >\cf0\par
+\cf10 </\cf11 project\cf10 >\cf0\par
+\lang9\par
+\par
+\ul\b\f0\fs22\par
+}
+ 

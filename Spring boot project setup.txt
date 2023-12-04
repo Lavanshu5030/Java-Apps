@@ -1,0 +1,16 @@
+1. How to make spring boot project in eclipse
+
+Steps-
+1.Go to spring initializr website
+2.Choose project maven, language java, version 3.1.6
+3.java 17
+4.Add dependencies 
+   - Spring Actuator
+   - Spring Web
+   - Spring Security
+   - Spring Dev tools
+click on generate
+5.Extract zip file in the workspace of eclipse
+6.Do import in eclipse
+7.if gets any error add jre library and force update the maven project
+8.Right click on main file...Run as java application..
